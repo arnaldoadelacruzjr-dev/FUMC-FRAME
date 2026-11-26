@@ -1,0 +1,11 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // PUBLIC ACCESS: anyone can read, create, update, or delete frame records.
+    // Use only if you accept that strangers can modify or remove your frames.
+    match /frames/{frameId} {
+      allow read, write: if true;
+    }
+  }
+}
